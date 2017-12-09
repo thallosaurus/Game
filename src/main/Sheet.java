@@ -17,7 +17,7 @@ public class Sheet extends JPanel {
 	Level lvl;
 	public Sheet(Player pl) {
 		p = pl;
-		lvl = new Level();
+		lvl = new Level(1);
 	}
 	
 	@Override

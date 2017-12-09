@@ -48,21 +48,21 @@ public class Player {
 		case "down":
 			degree = 0;
 			if ((this.y + 96 < 640)) {
-				this.y = this.y + 32;
+				this.y = this.y + 16;
 			}
 			break;
 			
 		case "left":
 			degree = 1;
 			if ((this.x > 0)) {
-				this.x = this.x - 32;
+				this.x = this.x - 16;
 			}
 			break;
 			
 		case "up":
 			degree = 2;	
 			if ((this.y > 0)) {
-				this.y = this.y - 32;
+				this.y = this.y - 16;
 			} else {
 				//do nothing
 			}
@@ -71,7 +71,7 @@ public class Player {
 		case "right":
 			degree = 3;
 			if ((this.x + 64 < 800)) {
-				this.x = this.x + 32;
+				this.x = this.x + 16;
 			}
 			break;
 		}
