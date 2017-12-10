@@ -25,9 +25,9 @@ public class Wall extends Rectangle {
 	}
 	
 	public void calcDimension() {
-		up = x;
-		down = x+h;
-		left = y;
-		right = y+w;
+		up = y;
+		down = y+h;
+		left = x;
+		right = x+w;
 	}
 }
