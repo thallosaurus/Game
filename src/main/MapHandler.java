@@ -46,11 +46,28 @@ class MapHandler {
 		for (int index = 0; index<lvl.size(); index++) {
 			for (int indexOfChar = 0; indexOfChar < lvl.get(index).length(); indexOfChar++) {
 				int s = lvl.get(index).codePointAt(indexOfChar);
-				if (s == 49) {
+				/* if (s == 49) {
 					walls.add(new Wall(indexOfChar, index));
                     System.out.println("Found Wall at ("+index+"/"+indexOfChar+")");
 				} else if (!(s == 48)) {
 					System.out.println(lvl.get(index).codePointAt(indexOfChar));
+				}
+				*/
+
+				switch (s) {
+					case 49:
+						walls.add(new Wall(indexOfChar, index));
+						break;
+					case 48:
+						//do nothing, because you can't add the void.
+						break;
+					case 57:
+						//TODO add the BetaOrb.
+						break;
+					default:
+						//Unknown Data
+						System.out.println(s);
+						break;
 				}
 			}
 		}

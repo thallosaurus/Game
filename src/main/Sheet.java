@@ -3,6 +3,7 @@ package main;
 import java.awt.Color;
 import java.awt.Graphics;
 import main.Player;
+import javax.sound.midi.MidiUnavailableException;
 import javax.swing.JPanel;
 import main.Level;
 

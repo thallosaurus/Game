@@ -2,7 +2,7 @@ package main;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-
+import javax.sound.midi.MidiUnavailableException;
 import javax.swing.*;
 import main.Player;
 
@@ -17,6 +17,13 @@ public class main extends JFrame implements KeyListener {
 		s = new Sheet(new Player());
 		
 		add(s);
+		
+		try {
+			Sound s = new Sound();
+		} catch (MidiUnavailableException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 		addKeyListener(this);
 		setVisible(true);
