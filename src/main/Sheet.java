@@ -28,6 +28,7 @@ public class Sheet extends JPanel {
 		checkCollision();
 		drawBackground(g);
 		drawLevel(g);
+		drawOrb(g);
 		g.drawImage(p.files.get(p.degree), p.x, p.y, null);
 	}
 	
@@ -41,6 +42,12 @@ public class Sheet extends JPanel {
 		for(int i = 0; i < lvl.walls.size(); i++) {
 			g.setColor(lvl.walls.get(i).c);
 			g.fillRect(lvl.walls.get(i).x, lvl.walls.get(i).y, lvl.walls.get(i).w, lvl.walls.get(i).h);
+		}
+	}
+
+	private void drawOrb(Graphics g) {
+		for(int i = 0; i < lvl.orb.size(); i++) {
+			g.drawImage(lvl.orb.get(i).orbSprite, lvl.orb.get(i).x, lvl.orb.get(i).y, null);
 		}
 	}
 	

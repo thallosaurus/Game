@@ -8,17 +8,20 @@ import org.apache.commons.io.LineIterator;
 
 class MapHandler {
     ArrayList <String> WallBuffer;
-    ArrayList<Wall> walls;
+	ArrayList<Wall> walls;
+	ArrayList<BetaOrb> orb;
 
     public MapHandler() {
-       walls = new ArrayList<Wall>();
+	   walls = new ArrayList<Wall>();
+	   orb = new ArrayList<BetaOrb>();
     }
-    public ArrayList<Wall> init(int lvl) {
+    public ArrayList<ArrayList> init(int lvl) {
 		ArrayList<String> WallBuffer = new ArrayList<String>();
 		File level = new File("level"+lvl);
         LineIterator it;
         
-        ArrayList<Wall> w = null;
+		ArrayList<Wall> w = null;
+		ArrayList<ArrayList> items = null;
 		
 		try {
 			it = FileUtils.lineIterator(level, "UTF-8");
@@ -29,16 +32,16 @@ class MapHandler {
 			} finally {
 				it.close();
                 //paintLevel(WallBuffer);
-                w = paintLevel(WallBuffer);
+                items = paintLevel(WallBuffer);
 			}
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
         }
-        return w;
+        return items;
     }
     
-    public ArrayList<Wall> paintLevel(ArrayList<String> lvl) {
+    public ArrayList<ArrayList> paintLevel(ArrayList<String> lvl) {
 		/* for (int vertical = 0; vertical<lvl.size(); vertical++) {
 			System.out.println(lvl.get(vertical));
 		} */
@@ -46,13 +49,6 @@ class MapHandler {
 		for (int index = 0; index<lvl.size(); index++) {
 			for (int indexOfChar = 0; indexOfChar < lvl.get(index).length(); indexOfChar++) {
 				int s = lvl.get(index).codePointAt(indexOfChar);
-				/* if (s == 49) {
-					walls.add(new Wall(indexOfChar, index));
-                    System.out.println("Found Wall at ("+index+"/"+indexOfChar+")");
-				} else if (!(s == 48)) {
-					System.out.println(lvl.get(index).codePointAt(indexOfChar));
-				}
-				*/
 
 				switch (s) {
 					case 49:
@@ -63,6 +59,7 @@ class MapHandler {
 						break;
 					case 57:
 						//TODO add the BetaOrb.
+						orb.add(new BetaOrb(indexOfChar, index));
 						break;
 					default:
 						//Unknown Data
@@ -71,7 +68,12 @@ class MapHandler {
 				}
 			}
 		}
-		return walls;
+
+		//Package everyting
+		ArrayList<ArrayList> listOfEverything = new ArrayList<ArrayList>();
+		listOfEverything.add(walls);
+		listOfEverything.add(orb);
+		return listOfEverything;
 	}
 }
 
